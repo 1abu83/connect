@@ -1,4 +1,4 @@
-package com.mycompany.testconnect
+package com.mycompany.butto
 
 import io.flutter.embedding.android.FlutterActivity
 

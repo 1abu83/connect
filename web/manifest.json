@@ -1,6 +1,6 @@
 {
-    "name": "testconnect",
-    "short_name": "testconnect",
+    "name": "butto",
+    "short_name": "butto",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -15,17 +15,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void initState() {
-    super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Page Title',
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Poppins',
+                color: Colors.white,
+                fontSize: 22,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+      ),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -33,14 +41,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.05, 0),
+                alignment: AlignmentDirectional(-0.05, 0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 300, 0, 10),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 300, 0, 0),
                   child: FFButtonWidget(
                     onPressed: () {
                       print('Button pressed ...');
                     },
-                    text: 'connect',
+                    text: 'Button',
                     options: FFButtonOptions(
                       width: 130,
                       height: 40,
