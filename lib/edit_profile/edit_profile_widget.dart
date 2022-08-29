@@ -33,6 +33,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder<UsersRecord>(
       stream: UsersRecord.getDocument(currentUserReference!),
@@ -57,7 +64,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
             automaticallyImplyLeading: false,
             leading: InkWell(
               onTap: () async {
-                Navigator.pop(context);
+                context.pop();
               },
               child: Icon(
                 Icons.arrow_back_rounded,
@@ -330,7 +337,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               );
                               await editProfileUsersRecord.reference
                                   .update(usersUpdateData);
-                              Navigator.pop(context);
+                              context.pop();
                             },
                             text: 'Save Changes',
                             options: FFButtonOptions(

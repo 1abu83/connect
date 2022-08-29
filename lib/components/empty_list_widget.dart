@@ -1,7 +1,6 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../my_friends/my_friends_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,6 +12,13 @@ class EmptyListWidget extends StatefulWidget {
 }
 
 class _EmptyListWidgetState extends State<EmptyListWidget> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -84,14 +90,15 @@ class _EmptyListWidgetState extends State<EmptyListWidget> {
           padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
           child: FFButtonWidget(
             onPressed: () async {
-              await Navigator.push(
-                context,
-                PageTransition(
-                  type: PageTransitionType.bottomToTop,
-                  duration: Duration(milliseconds: 220),
-                  reverseDuration: Duration(milliseconds: 220),
-                  child: MyFriendsWidget(),
-                ),
+              context.pushNamed(
+                'MyFriends',
+                extra: <String, dynamic>{
+                  kTransitionInfoKey: TransitionInfo(
+                    hasTransition: true,
+                    transitionType: PageTransitionType.bottomToTop,
+                    duration: Duration(milliseconds: 220),
+                  ),
+                },
               );
             },
             text: 'Find Friends',

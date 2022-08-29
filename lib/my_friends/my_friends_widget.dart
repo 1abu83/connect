@@ -1,5 +1,4 @@
 import '../backend/backend.dart';
-import '../chat_details/chat_details_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -16,6 +15,13 @@ class MyFriendsWidget extends StatefulWidget {
 
 class _MyFriendsWidgetState extends State<MyFriendsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +50,7 @@ class _MyFriendsWidgetState extends State<MyFriendsWidget> {
                 size: 30,
               ),
               onPressed: () async {
-                Navigator.pop(context);
+                context.pop();
               },
             ),
           ),
@@ -118,13 +124,15 @@ class _MyFriendsWidgetState extends State<MyFriendsWidget> {
                             ),
                             child: InkWell(
                               onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ChatDetailsWidget(
-                                      chatUser: columnUsersRecord,
-                                    ),
-                                  ),
+                                context.pushNamed(
+                                  'chatDetails',
+                                  queryParams: {
+                                    'chatUser': serializeParam(
+                                        columnUsersRecord, ParamType.Document),
+                                  }.withoutNulls,
+                                  extra: <String, dynamic>{
+                                    'chatUser': columnUsersRecord,
+                                  },
                                 );
                               },
                               child: Row(

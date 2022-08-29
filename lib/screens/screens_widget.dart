@@ -1,4 +1,3 @@
-import '../connect/connect_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -53,6 +52,8 @@ class _ScreensWidgetState extends State<ScreensWidget>
           .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -110,12 +111,7 @@ class _ScreensWidgetState extends State<ScreensWidget>
               padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
               child: FFButtonWidget(
                 onPressed: () async {
-                  await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ConnectWidget(),
-                    ),
-                  );
+                  context.pushNamed('connect');
                 },
                 text: 'connect wallet\n',
                 options: FFButtonOptions(

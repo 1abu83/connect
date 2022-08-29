@@ -27,6 +27,7 @@ class _PostWidgetState extends State<PostWidget> {
   void initState() {
     super.initState();
     textController = TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -58,7 +59,7 @@ class _PostWidgetState extends State<PostWidget> {
                 size: 30,
               ),
               onPressed: () async {
-                Navigator.pop(context);
+                context.pop();
               },
             ),
           ),

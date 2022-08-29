@@ -3,9 +3,6 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../forgot_password/forgot_password_widget.dart';
-import '../main.dart';
-import '../register/register_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,6 +26,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     emailTextController = TextEditingController();
     passwordTextController = TextEditingController();
     passwordVisibility = false;
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -175,6 +173,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
+                    GoRouter.of(context).prepareAuthEvent();
+
                     final user = await signInWithEmail(
                       context,
                       emailTextController!.text,
@@ -184,13 +184,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       return;
                     }
 
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            NavBarPage(initialPage: 'chatMain'),
-                      ),
-                    );
+                    context.pushNamedAuth('chatMain', mounted);
                   },
                   text: 'Log In',
                   options: FFButtonOptions(
@@ -224,14 +218,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          await Navigator.push(
-                            context,
-                            PageTransition(
-                              type: PageTransitionType.fade,
-                              duration: Duration(milliseconds: 150),
-                              reverseDuration: Duration(milliseconds: 150),
-                              child: RegisterWidget(),
-                            ),
+                          context.pushNamed(
+                            'Register',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 150),
+                              ),
+                            },
                           );
                         },
                         text: 'Create Account',
@@ -259,12 +254,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 6),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ForgotPasswordWidget(),
-                        ),
-                      );
+                      context.pushNamed('forgotPassword');
                     },
                     text: 'Forgot Password?',
                     options: FFButtonOptions(
@@ -285,6 +275,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                   child: FFButtonWidget(
                     onPressed: () async {
+                      GoRouter.of(context).prepareAuthEvent();
                       final user = await signInAnonymously(context);
                       if (user == null) {
                         return;
@@ -296,14 +287,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                         userRole: 'Geek Master',
                       );
                       await currentUserReference!.update(usersUpdateData);
-                      await Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.bottomToTop,
-                          duration: Duration(milliseconds: 250),
-                          reverseDuration: Duration(milliseconds: 250),
-                          child: NavBarPage(initialPage: 'chatMain'),
-                        ),
+                      context.pushNamedAuth(
+                        'chatMain',
+                        mounted,
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.bottomToTop,
+                            duration: Duration(milliseconds: 250),
+                          ),
+                        },
                       );
                     },
                     text: 'Continue as Guest',

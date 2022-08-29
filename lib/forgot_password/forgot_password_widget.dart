@@ -20,6 +20,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
   void initState() {
     super.initState();
     emailAddressController = TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -31,7 +32,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
         automaticallyImplyLeading: false,
         leading: InkWell(
           onTap: () async {
-            Navigator.pop(context);
+            context.pop();
           },
           child: Icon(
             Icons.chevron_left_rounded,
@@ -108,7 +109,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                     email: emailAddressController!.text,
                     context: context,
                   );
-                  Navigator.pop(context);
+                  context.pop();
                 },
                 text: 'Send Reset Link',
                 options: FFButtonOptions(

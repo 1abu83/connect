@@ -20,6 +20,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
   void initState() {
     super.initState();
     emailAddressController = TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -31,7 +32,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
         automaticallyImplyLeading: false,
         leading: InkWell(
           onTap: () async {
-            Navigator.pop(context);
+            context.pop();
           },
           child: Icon(
             Icons.chevron_left_rounded,
@@ -118,7 +119,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                     email: emailAddressController!.text,
                     context: context,
                   );
-                  Navigator.pop(context);
+                  context.pop();
                 },
                 text: 'Send Reset Link',
                 options: FFButtonOptions(

@@ -1,14 +1,11 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
-import '../change_password/change_password_widget.dart';
-import '../edit_profile/edit_profile_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
-import '../login/login_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -66,6 +63,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
           .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -514,16 +513,23 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                 ),
                                 child: InkWell(
                                   onTap: () async {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => EditProfileWidget(
-                                          userEmail: myProfileUsersRecord,
-                                          userDisplay: myProfileUsersRecord,
-                                          userPhoto:
-                                              myProfileUsersRecord.reference,
-                                        ),
-                                      ),
+                                    context.pushNamed(
+                                      'editProfile',
+                                      queryParams: {
+                                        'userEmail': serializeParam(
+                                            myProfileUsersRecord,
+                                            ParamType.Document),
+                                        'userDisplay': serializeParam(
+                                            myProfileUsersRecord,
+                                            ParamType.Document),
+                                        'userPhoto': serializeParam(
+                                            myProfileUsersRecord.reference,
+                                            ParamType.DocumentReference),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'userEmail': myProfileUsersRecord,
+                                        'userDisplay': myProfileUsersRecord,
+                                      },
                                     );
                                   },
                                   child: Row(
@@ -579,13 +585,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                               ),
                               child: InkWell(
                                 onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          ChangePasswordWidget(),
-                                    ),
-                                  );
+                                  context.pushNamed('changePassword');
                                 },
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -624,14 +624,9 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                           children: [
                             FFButtonWidget(
                               onPressed: () async {
+                                GoRouter.of(context).prepareAuthEvent();
                                 await signOut();
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginWidget(),
-                                  ),
-                                  (r) => false,
-                                );
+                                context.goNamedAuth('Login', mounted);
                               },
                               text: 'Log Out',
                               options: FFButtonOptions(
@@ -655,14 +650,9 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                             ),
                             FFButtonWidget(
                               onPressed: () async {
+                                GoRouter.of(context).prepareAuthEvent();
                                 await signOut();
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginWidget(),
-                                  ),
-                                  (r) => false,
-                                );
+                                context.goNamedAuth('Login', mounted);
                               },
                               text: 'stream',
                               options: FFButtonOptions(
