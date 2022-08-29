@@ -1,4 +1,4 @@
-package com.mycompany.butto
+package kaleo.chat.app
 
 import io.flutter.embedding.android.FlutterActivity
 

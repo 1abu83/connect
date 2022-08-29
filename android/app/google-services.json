@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "872528172584",
+    "firebase_url": "https://livestreaming-cba32-default-rtdb.firebaseio.com",
+    "project_id": "livestreaming-cba32",
+    "storage_bucket": "livestreaming-cba32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872528172584:android:788bf9ab1b517cd379871d",
+        "android_client_info": {
+          "package_name": "kaleo.chat.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872528172584-0ktr2u3grauqthi8ieljaffutg90dfln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe0PdL-m3PyGWGAb_0axn24kU315jxRQ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "872528172584-0ktr2u3grauqthi8ieljaffutg90dfln.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "872528172584-ssip5rqpeivcsbab37pokg4to45a5d9n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "kaleo.chat.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

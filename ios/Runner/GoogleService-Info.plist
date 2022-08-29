@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>872528172584-ssip5rqpeivcsbab37pokg4to45a5d9n.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.872528172584-ssip5rqpeivcsbab37pokg4to45a5d9n</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD1L1V9-bx5V_pkEiFnpQi4YZwuUruUHe8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>872528172584</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>kaleo.chat.app</string>
+	<key>PROJECT_ID</key>
+	<string>livestreaming-cba32</string>
+	<key>STORAGE_BUCKET</key>
+	<string>livestreaming-cba32.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:872528172584:ios:b6f089e4bf7c49e279871d</string>
+	<key>DATABASE_URL</key>
+	<string>https://livestreaming-cba32-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

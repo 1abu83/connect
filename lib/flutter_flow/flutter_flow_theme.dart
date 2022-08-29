@@ -38,8 +38,11 @@ abstract class FlutterFlowTheme {
   late Color primaryText;
   late Color secondaryText;
 
-  late Color primaryBtnText;
-  late Color lineColor;
+  late Color grayDark;
+  late Color dark900;
+  late Color background;
+  late Color grayIcon;
+  late Color tertiary;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -61,16 +64,19 @@ abstract class FlutterFlowTheme {
 
 class LightModeTheme extends FlutterFlowTheme {
   late Color primaryColor = const Color(0xFF4B39EF);
-  late Color secondaryColor = const Color(0xFF39D2C0);
-  late Color tertiaryColor = const Color(0xFFEE8B60);
-  late Color alternate = const Color(0xFFFF5963);
+  late Color secondaryColor = const Color(0xFFEE8B60);
+  late Color tertiaryColor = const Color(0xFFFFFFFF);
+  late Color alternate = const Color(0xFF39D2C0);
   late Color primaryBackground = const Color(0xFFF1F4F8);
   late Color secondaryBackground = const Color(0xFFFFFFFF);
-  late Color primaryText = const Color(0xFF101213);
-  late Color secondaryText = const Color(0xFF57636C);
+  late Color primaryText = const Color(0xFF090F13);
+  late Color secondaryText = const Color(0xFF95A1AC);
 
-  late Color primaryBtnText = Color(0xFFFFFFFF);
-  late Color lineColor = Color(0xFFE0E3E7);
+  late Color grayDark = Color(0xFF616E78);
+  late Color dark900 = Color(0xFFFFFFFF);
+  late Color background = Color(0xFFF1F4F8);
+  late Color grayIcon = Color(0xFF95A1AC);
+  late Color tertiary = Color(0xFF39D2C0);
 }
 
 abstract class Typography {
@@ -95,69 +101,72 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get title1Family => 'Poppins';
+  String get title1Family => 'Lexend Deca';
   TextStyle get title1 => GoogleFonts.getFont(
-        'Poppins',
+        'Lexend Deca',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 24,
       );
-  String get title2Family => 'Poppins';
+  String get title2Family => 'Lexend Deca';
   TextStyle get title2 => GoogleFonts.getFont(
-        'Poppins',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.w600,
+        'Lexend Deca',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
         fontSize: 22,
       );
-  String get title3Family => 'Poppins';
+  String get title3Family => 'Lexend Deca';
   TextStyle get title3 => GoogleFonts.getFont(
-        'Poppins',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        'Lexend Deca',
+        color: theme.tertiary,
+        fontWeight: FontWeight.bold,
         fontSize: 20,
       );
-  String get subtitle1Family => 'Poppins';
+  String get subtitle1Family => 'Lexend Deca';
   TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Poppins',
+        'Lexend Deca',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w500,
         fontSize: 18,
       );
-  String get subtitle2Family => 'Poppins';
+  String get subtitle2Family => 'Lexend Deca';
   TextStyle get subtitle2 => GoogleFonts.getFont(
-        'Poppins',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.w600,
+        'Lexend Deca',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
         fontSize: 16,
       );
-  String get bodyText1Family => 'Poppins';
+  String get bodyText1Family => 'Lexend Deca';
   TextStyle get bodyText1 => GoogleFonts.getFont(
-        'Poppins',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        'Lexend Deca',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.normal,
         fontSize: 14,
       );
-  String get bodyText2Family => 'Poppins';
+  String get bodyText2Family => 'Lexend Deca';
   TextStyle get bodyText2 => GoogleFonts.getFont(
-        'Poppins',
+        'Lexend Deca',
         color: theme.secondaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 14,
+        fontWeight: FontWeight.normal,
+        fontSize: 12,
       );
 }
 
 class DarkModeTheme extends FlutterFlowTheme {
   late Color primaryColor = const Color(0xFF4B39EF);
-  late Color secondaryColor = const Color(0xFF39D2C0);
-  late Color tertiaryColor = const Color(0xFFEE8B60);
-  late Color alternate = const Color(0xFFFF5963);
+  late Color secondaryColor = const Color(0xFFEE8B60);
+  late Color tertiaryColor = const Color(0xFFFFFFFF);
+  late Color alternate = const Color(0xFF39D2C0);
   late Color primaryBackground = const Color(0xFF1A1F24);
-  late Color secondaryBackground = const Color(0xFF101213);
+  late Color secondaryBackground = const Color(0xFF090F13);
   late Color primaryText = const Color(0xFFFFFFFF);
   late Color secondaryText = const Color(0xFF95A1AC);
 
-  late Color primaryBtnText = Color(0xFFFFFFFF);
-  late Color lineColor = Color(0xFF22282F);
+  late Color grayDark = Color(0xFF95A1AC);
+  late Color dark900 = Color(0xFF1A1F24);
+  late Color background = Color(0xFF14181B);
+  late Color grayIcon = Color(0xFF95A1AC);
+  late Color tertiary = Color(0xFF39D2C0);
 }
 
 extension TextStyleHelper on TextStyle {
