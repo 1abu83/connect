@@ -85,8 +85,8 @@ class _ScreensWidgetState extends State<ScreensWidget>
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
               child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
+                onPressed: () async {
+                  context.pushNamed('Login');
                 },
                 text: 'email',
                 options: FFButtonOptions(

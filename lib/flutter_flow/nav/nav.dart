@@ -66,13 +66,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
+          appStateNotifier.loggedIn ? LoginWidget() : ScreensWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
+              appStateNotifier.loggedIn ? LoginWidget() : ScreensWidget(),
           routes: [
             FFRoute(
               name: 'Login',
@@ -90,14 +90,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => MyFriendsWidget(),
             ),
             FFRoute(
-              name: 'completeProfile',
-              path: 'completeProfile',
-              builder: (context, params) => CompleteProfileWidget(),
-            ),
-            FFRoute(
               name: 'forgotPassword',
               path: 'forgotPassword',
               builder: (context, params) => ForgotPasswordWidget(),
+            ),
+            FFRoute(
+              name: 'completeProfile',
+              path: 'completeProfile',
+              builder: (context, params) => CompleteProfileWidget(),
             ),
             FFRoute(
               name: 'chatDetails',
@@ -114,9 +114,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'chatMain',
               path: 'chatMain',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'chatMain')
-                  : ChatMainWidget(),
+              builder: (context, params) => ChatMainWidget(),
             ),
             FFRoute(
               name: 'changePassword',
@@ -126,9 +124,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'myProfile',
               path: 'myProfile',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'myProfile')
-                  : MyProfileWidget(),
+              builder: (context, params) => MyProfileWidget(),
             ),
             FFRoute(
               name: 'editProfile',
@@ -158,6 +154,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'connect',
               path: 'connect',
               builder: (context, params) => ConnectWidget(),
+            ),
+            FFRoute(
+              name: 'ambil',
+              path: 'ambil',
+              builder: (context, params) => AmbilWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -311,7 +312,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/login';
+            return '/screens';
           }
           return null;
         },

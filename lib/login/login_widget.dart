@@ -44,7 +44,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             image: DecorationImage(
               fit: BoxFit.fitWidth,
               image: Image.asset(
-                'assets/images/launchScreen@3x.png',
+                'assets/images/splash.png',
               ).image,
             ),
           ),
@@ -57,7 +57,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 24),
                   child: Image.asset(
-                    'assets/images/logoGeekMessaging.png',
+                    'assets/images/logo_dverse_fix-01_(1).png',
                     width: 160,
                     height: 140,
                     fit: BoxFit.cover,

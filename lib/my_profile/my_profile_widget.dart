@@ -626,7 +626,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                               onPressed: () async {
                                 GoRouter.of(context).prepareAuthEvent();
                                 await signOut();
-                                context.goNamedAuth('Login', mounted);
+                                context.goNamedAuth('screens', mounted);
                               },
                               text: 'Log Out',
                               options: FFButtonOptions(
@@ -652,7 +652,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                               onPressed: () async {
                                 GoRouter.of(context).prepareAuthEvent();
                                 await signOut();
-                                context.goNamedAuth('Login', mounted);
+                                context.goNamedAuth('screens', mounted);
                               },
                               text: 'stream',
                               options: FFButtonOptions(
